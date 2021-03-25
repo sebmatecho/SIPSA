@@ -14,6 +14,8 @@ SIPSA is actually a branch of DANE (Departamento Administrativo Nacional de Esta
 
 Data files were obtained directly from DANE's official webpage
 
+    ![Tux, the Linux mascot](/Images/ambas.eps)
+
 # Model bulding 
 
 # Model Performance
