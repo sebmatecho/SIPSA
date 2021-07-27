@@ -22,7 +22,7 @@ Once the proposed index was computed, it was compared with correspondant food in
 
 Three approaches were used in order to study the relation between food inflation and the proposed SIPSA index: i) SARIMAX model (for individual forecasting purposes), ii) VAR model (for joint forecasting purposes) and iii) VEC model (for equilibrium equation purposes). 
 
-| Parameter      | <img src="https://render.githubusercontent.com/render/math?math=\phi\_{1}">  | ~~\\phi\_{10}~~  | ~~\\theta\_1~~  | ~~\\theta\_{13}~~  | ~~\\Phi\_1~~  | ~~\\text{SIPSA}\_t~~  | ~~\\text{SIPSA}\_{t-1}~~ |
+| Parameter      | <img src="https://render.githubusercontent.com/render/math?math=\phi_1">  | ~~\\phi\_{10}~~  | ~~\\theta\_1~~  | ~~\\theta\_{13}~~  | ~~\\Phi\_1~~  | ~~\\text{SIPSA}\_t~~  | ~~\\text{SIPSA}\_{t-1}~~ |
 | :------------: | :-------------: | :--------------: | :-------------: | :----------------: | :-----------: | :-------------------: | :----------------------: |
 | Estimation     | -0\.466         | -0\.261          | -0\.492         | 0\.323             | -0\.457       | 0\.300                | 0\.157                   |
 | Standard error | 0\.1147         | 0\.1115          | 0\.1357         | 0\.1246            | 0\.1130       | 0\.0425               | 0\.0434                  |
