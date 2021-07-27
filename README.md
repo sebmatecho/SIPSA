@@ -51,6 +51,6 @@ Where
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDinf}_i">   | -1\.1881 | -1\.055 | -0\.941 | -1\.384 | -1\.417 | -0\.991 | -1\.567 | -1\.131 | -1\.428 | -1\.147 | -0\.877 |
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDSIPSA}_i">  | -0\.930  | -0\.293 | -0\.590 | -1\.755 | -1\.210 | -0\.060 | -1\.597 | -0\.895 | -0\.655 | -0\.535 | -0\.200 |
 
-Once the model was obtained, stability was verified.
+Once the model was obtained, stability was verified by means of the impulse-response approach.
 
-![Tux, the Linux mascot](/Images/fittedvar.png)
+![Tux, the Linux mascot](/Images/impusloipc2.png)
