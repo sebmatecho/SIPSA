@@ -42,8 +42,8 @@ This model displays no evidencie of autocorrelation (p-value for Ljung-Box test 
 
 After an exhaustive search process, a SVAR(1) was established as the best model. Such model is indexed by the following parameters. 
 
-<img src="https://render.githubusercontent.com/render/math?math=\text{Inf}_t &= 0.26475 -0.00195t+ 0.47304 \text{Inf}_{t-1} +0.06235 \text{SISPA}_{t-1} + \sum_{i=1}^{11}\text{SDinf}_i \bm{1}_i,">
-<img src="https://render.githubusercontent.com/render/math?math=\text{SIPSA}_t &= 0.34206-0.00464t+ 0.44231\text{Inf}_{t-1} + -0.0003\text{SISPA}_{t-1} + \sum_{i=1}^{11}\text{SDSIPSA}_i \bm{1}_i ">
+<img src="https://render.githubusercontent.com/render/math?math=\text{Inf}_t = 0.26475 -0.00195t+ 0.47304 \text{Inf}_{t-1} +0.06235 \text{SISPA}_{t-1} + \sum_{i=1}^{11}\text{SDinf}_i \bm{1}_i,">
+<img src="https://render.githubusercontent.com/render/math?math=\text{SIPSA}_t = 0.34206-0.00464t+ 0.44231\text{Inf}_{t-1} -0.0003\text{SISPA}_{t-1} + \sum_{i=1}^{11}\text{SDSIPSA}_i \bm{1}_i ">
 
 |  i                | 1        | 2       | 3       | 4       | 5       | 6       | 7       | 8       | 9       | 10      | 11      |
 | :---------------------: | :------: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
