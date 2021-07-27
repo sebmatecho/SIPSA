@@ -41,11 +41,16 @@ This model displays no evidencie of autocorrelation (p-value for Ljung-Box test 
 ## VAR model 
 
 After an exhaustive search process, a SVAR(1) was established as the best model. Such model is indexed by the following parameters. 
-
 <img src="https://render.githubusercontent.com/render/math?math=\text{Inf}_t = 0.26475 -0.00195t+ 0.47304 \text{Inf}_{t-1} +0.06235 \text{SISPA}_{t-1} + \sum_{i=1}^{11}\text{SDinf}_i \bm{1}_i,">
 <img src="https://render.githubusercontent.com/render/math?math=\text{SIPSA}_t = 0.34206-0.00464t+ 0.44231\text{Inf}_{t-1} -0.0003\text{SISPA}_{t-1} + \sum_{i=1}^{11}\text{SDSIPSA}_i \bm{1}_i ">
+
+Where
 
 |  i                | 1        | 2       | 3       | 4       | 5       | 6       | 7       | 8       | 9       | 10      | 11      |
 | :---------------------: | :------: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDinf}_i">   | -1\.1881 | -1\.055 | -0\.941 | -1\.384 | -1\.417 | -0\.991 | -1\.567 | -1\.131 | -1\.428 | -1\.147 | -0\.877 |
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDSIPSA}_i">  | -0\.930  | -0\.293 | -0\.590 | -1\.755 | -1\.210 | -0\.060 | -1\.597 | -0\.895 | -0\.655 | -0\.535 | -0\.200 |
+
+Once the model was obtained, stability was verified.
+
+![Tux, the Linux mascot](/Images/fittedvar.png)
