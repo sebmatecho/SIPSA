@@ -22,14 +22,20 @@ Once the proposed index was computed, it was compared with correspondant food in
 
 Three approaches were used in order to study the relation between food inflation and the proposed SIPSA index: i) SARIMAX model (for individual forecasting purposes), ii) VAR model (for joint forecasting purposes) and iii) VEC model (for equilibrium equation purposes). 
 
+
+## SARIMAX model 
+
+After an exhaustive search process, a <img src="https://render.githubusercontent.com/render/math?math=SARIMAX$(10,1,13)\times (1,1,0)_{12}"> was established as the best model. Such model is indexed by the following parameters. 
+
 | Parameter      | <img src="https://render.githubusercontent.com/render/math?math=\phi_1">  | <img src="https://render.githubusercontent.com/render/math?math=\phi_{10}">  | <img src="https://render.githubusercontent.com/render/math?math=\theta_1"> | <img src="https://render.githubusercontent.com/render/math?math=\phi_{13}"> | <img src="https://render.githubusercontent.com/render/math?math=\Phi_13">  | <img src="https://render.githubusercontent.com/render/math?math=\text{SIPSA}_t">  | <img src="https://render.githubusercontent.com/render/math?math=\text{SIPSA}_{t-1}"> |
 | :------------: | :-------------: | :--------------: | :-------------: | :----------------: | :-----------: | :-------------------: | :----------------------: |
 | Estimation     | -0\.466         | -0\.261          | -0\.492         | 0\.323             | -0\.457       | 0\.300                | 0\.157                   |
 | Standard error | 0\.1147         | 0\.1115          | 0\.1357         | 0\.1246            | 0\.1130       | 0\.0425               | 0\.0434                  |
 | t-value        | -4\.06          | -2\.34           | -3\.62          | 2\.60              | -4\.04        | 7\.06                 | 3\.63                    |
 
-# Model Performance
+This model displays no evidencie of autocorrelation (p-value for Ljung-Box test of 0.1686 was obtained) as well of no normality on its residuals (p-value for Jarque-Bera test <0.01 was found). Additionaly, visual inspection of residuals shows good adequacy. BIC was used as general goodness of fit measure, for this model, we report a BIC of -120. 
 
+![Tux, the Linux mascot](/Images/valarimax.png)
 
 
 
