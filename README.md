@@ -25,7 +25,7 @@ Three approaches were used in order to study the relation between food inflation
 
 ## SARIMAX model 
 
-After an exhaustive search process, a <img src="https://render.githubusercontent.com/render/math?math=SARIMAX$(10,1,13)\times (1,1,0)_{12}"> was established as the best model. Such model is indexed by the following parameters. 
+After an exhaustive search process, a <img src="https://render.githubusercontent.com/render/math?math=\text{SARIMAX}(10,1,13)\times (1,1,0)_{12}"> was established as the best model. Such model is indexed by the following parameters. 
 
 | Parameter      | <img src="https://render.githubusercontent.com/render/math?math=\phi_1">  | <img src="https://render.githubusercontent.com/render/math?math=\phi_{10}">  | <img src="https://render.githubusercontent.com/render/math?math=\theta_1"> | <img src="https://render.githubusercontent.com/render/math?math=\phi_{13}"> | <img src="https://render.githubusercontent.com/render/math?math=\Phi_13">  | <img src="https://render.githubusercontent.com/render/math?math=\text{SIPSA}_t">  | <img src="https://render.githubusercontent.com/render/math?math=\text{SIPSA}_{t-1}"> |
 | :------------: | :-------------: | :--------------: | :-------------: | :----------------: | :-----------: | :-------------------: | :----------------------: |
