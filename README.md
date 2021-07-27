@@ -3,7 +3,7 @@
 This repository contains code for the paper 
 > [**Proposal for a SIPSA index and its relation to food inflation for the Colombian case: empirical evidence**](https://revistas.usantotomas.edu.co/index.php/estadistica/article/view/5635/5549).
 
-SIPSA is actually a branch of DANE (Departamento Administrativo Nacional de Estadística - National Administrative Department of Statistics) in charge of collecting food prices   for every product sold in marketplaces located in every city, ranging from medium to big, in the country. Our aim was to utilize such information as a proxy for understanding and thus, predicting, food inflation (wich, for colombian market, represents ~25% of overall inflation). Several conclusions: 
+SIPSA is actually a branch of DANE (Departamento Administrativo Nacional de Estadística - National Administrative Department of Statistics, public agency in Colombia dealing with national statistics) in charge of collecting food prices for every product sold in marketplaces located in every city ranging from medium to big sized, across the country. The main aim was to utilize such information as a proxy for understanding and thus, predicting, food inflation (wich, for colombian market, represents ~25% of overall inflation). Several conclusions: 
 
 - Construct an index based on information available directly from DANE's webpage. 
 - Using such index, an improvement of 40% is observed when attempting to forecast food inflation (based on train/test samples split) using a Box-Jenkins approach (SARIMAX model). 
