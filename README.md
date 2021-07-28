@@ -53,4 +53,4 @@ Where
 
 Once the model was obtained, stability was verified by means of the impulse-response approach.
 
-![Tux, the Linux mascot](/Images/fluctuacion.png)
+![Tux, the Linux mascot](/Images/impusloipc2.png)
