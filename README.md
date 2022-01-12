@@ -57,9 +57,10 @@ Once the model was obtained, stability was verified by means of the impulse-resp
 
  At the end, the proposed model aims to provide a reasonable pattern understanding in the short run relation between the proposed SIPSA index and food inflation. This is clearly determined by the variance descomposition. SIPSA proposed index explains ~40% of the variance in the forecast of food inflation. 
  
- ![Tux, the Linux mascot](/Images/fevdsipsa.png)
+ ![Tux, the Linux mascot](/Images/fevdipc.png)
  
  ## VEC model
+ After an exhaustive search process, a SVAR was established as the best model to determine the relation between variables in the long run. Such model implies the following equilibrium equation.
  
- 
+ <img src="https://render.githubusercontent.com/render/math?math=y_t=\text{Variación en precios de alimentos}_t-1.2218\text{SIPSA}_t-0.0007t \sim I(0)  ">
 
