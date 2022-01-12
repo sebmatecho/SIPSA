@@ -51,8 +51,15 @@ Where
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDinf}_i">   | -1\.1881 | -1\.055 | -0\.941 | -1\.384 | -1\.417 | -0\.991 | -1\.567 | -1\.131 | -1\.428 | -1\.147 | -0\.877 |
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDSIPSA}_i">  | -0\.930  | -0\.293 | -0\.590 | -1\.755 | -1\.210 | -0\.060 | -1\.597 | -0\.895 | -0\.655 | -0\.535 | -0\.200 |
 
-Once the model was obtained, stability was verified by means of the impulse-response approach. 
+Once the model was obtained, stability was verified by means of the impulse-response approach and residuals were checked by means of Portmanteau, Arch and Mutivariate normality test at usual 5% of significance.
 
 ![Tux, the Linux mascot](/Images/fluctuacion.png)
 
-now 
+ At the end, the proposed model aims to provide a reasonable pattern understanding in the short run relation between the proposed SIPSA index and food inflation. This is clearly determined by the variance descomposition. SIPSA proposed index explains ~40% of the variance in the forecast of food inflation. 
+ 
+ ![Tux, the Linux mascot](/Images/fevdsipsa.eps)
+ 
+ ## VEC model
+ 
+ 
+
