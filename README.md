@@ -62,5 +62,5 @@ Once the model was obtained, stability was verified by means of the impulse-resp
  ## VEC model
  After an exhaustive search process, a SVAR was established as the best model to determine the relation between variables in the long run. Such model implies the following equilibrium equation.
  
- <img src="https://render.githubusercontent.com/render/math?math=y_t=\text{Variación en precios de alimentos}_t-1.2218\text{SIPSA}_t-0.0007t \sim I(0)  ">
+ <img src="https://render.githubusercontent.com/render/math?math=y_t=\text{Food inflation}_t-1.2218\text{SIPSA}_t-0.0007t \sim I(0)  ">
 
