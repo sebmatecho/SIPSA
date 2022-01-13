@@ -3,6 +3,13 @@
 This repository contains code for the paper 
 > [**Proposal for a SIPSA index and its relation to food inflation for the Colombian case: empirical evidence**](https://revistas.usantotomas.edu.co/index.php/estadistica/article/view/5635/5549).
 
+Food inflation is often considered as an important topic as it impacts greatly every single person in a society. Thus, being able to forecast it, up to certain degree of precision, is of interest of related individuals, public and private entities involved in food supply chains. In this work, we aimed to contribute to this problem, for the colombian scenario, proposing an index (SIPSA index) and assessing its relevance when it comes to forecast food inflation. Three models were used: 
+1. Seasonal Autoregressive Integrated Moving Average with exogenous regressors (SARIMAX) model, which provides a way to forecast food inflation using the proposed SIPSA index as an exogenous variable. 
+2. Structural Vectorial Autoregressive (SVAR) model, which provides a glimpse on the dynamics on the short-term relation between variables and the variance descomposition for the forecast of food inflation. We estimate that 40% of food inflation can be explained with the proposed index. 
+3. Structural Vector Error Correction (SVEC) model, which provides a glimpse on the dynamics on the long-term relation between variables and the equilibrium equation stablishing the linear combination of variables being I(0). This is, the proposed index succeed to capture the dynamics of the food inflation in the long-run. 
+
+}
+
 SIPSA is actually a branch of DANE (Departamento Administrativo Nacional de Estadística - National Administrative Department of Statistics, public agency in Colombia dealing with national statistics) in charge of collecting food prices for every product sold in marketplaces located in every city ranging from medium to big sized, across the country. The main aim was to utilize such information as a proxy for understanding and thus, predicting, food inflation (wich, for colombian market, represents ~25% of overall inflation). Several conclusions: 
 
 - Construct an index based on information available directly from DANE's webpage. 
