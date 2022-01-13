@@ -24,8 +24,6 @@ SIPSA weekly reports would display the price of each product at each marketplace
 
 Once the proposed index was computed, it was compared with correspondant food inflation. A correlation of 0.6 was found. In the following figure, the red line displays food variation and blue line displays the proposed SIPSA index. 
 
-![Tux, the Linux mascot](/Images/ambas.png)
-
 # Model bulding 
 
 Three approaches were used in order to study the relation between food inflation and the proposed SIPSA index: i) SARIMAX model (for individual forecasting purposes), ii) VAR model (for joint forecasting purposes) and iii) VEC model (for equilibrium equation purposes). 
@@ -64,6 +62,13 @@ At the end, the proposed model aims to provide a reasonable pattern understandin
  
 This stablishes that the proposed index captures the dynamics of food inflation in the long run. 
 
+# Future work 
+
+1. Formulation a SIPSA index based on another methodology (different from the calculation of medians) to obtain a more robust index that helps to better capture the information present in the reports given by SIPSA.
+2. Understanding of the SIPSA index may be leveraged if other variables could be included, such as: fuel prices, weather, some infrastructure index, etc.
+3. Formulating other indices, not necessarily based on SIPSA, to see their relationship over time with the variation and with the index proposed here.
+4. Based on the SIPSA index presented, investigate a complementary methodology that incorporates the dynamics of food consumption out of home (which is 30% of food inflation in Colombia).
+    
 
  
  
