@@ -1,7 +1,5 @@
-###Cálculo del índice SIPSA###
+###CÃ¡lculo del Ã­ndice SIPSA###
 
-setwd("G:/Mi unidad/U libertadores/2018.1/Especialización/Trabajo de grado/Archivos finales")
-setwd("C:/Users/Seb/Google Drive/U libertadores/2018.1/Especialización/Trabajo de grado/SIPSA semanal")
 library(AER)
 library(readxl)
 library(zoo)
@@ -20,11 +18,10 @@ library(lmtest)
 library(forecast)
 #IPC sale de: 
 #https://www.dane.gov.co/index.php/estadisticas-por-tema/precios-y-costos/indice-de-precios-al-consumidor-ipc/grupos-ipc-2012
-#Generación de archivo con los nombres de todos los archivos que se consideran
+#GeneraciÃ³n de archivo con los nombres de todos los archivos que se consideran
 
 write.table(list.files("C:/Users/santander/Documents/Datos/SIPSA semanal"),"archivos.txt",
             quote = FALSE,sep = "\t",row.names = F,col.names = F)
-setwd("G:/Mi unidad/U libertadores/2018.1/Especialización/Trabajo de grado/Archivos finales/ultimo")
 #### formatos originales del SIPSA
 #Tablas en las que se imprimen las medias y medianas
 #write.table("medias_semana.txt",append = T,col.names=F)
@@ -71,21 +68,21 @@ for(i in 1:nrow(archivos)){
   
 }
 
-#####Archivos que tienen codificación diferente
-nombres<-c("Verduras_Hortalizas","Fruta","Tubérculos",
-           "Granos_cereales","Huevos_Lácteos","Carnes",
+#####Archivos que tienen codificaciÃ³n diferente
+nombres<-c("Verduras_Hortalizas","Fruta","TubÃ©rculos",
+           "Granos_cereales","Huevos_LÃ¡cteos","Carnes",
            "Pescados","Procesados")
 nombres2<- c("1.1","1.2","1.3","1.4","1.5","1.6","1.7","1.8") 
 #write.table("medianas_semana2formato.txt",append = T,col.names=F)
 archivos<-read.table("archivos_ordenado2.txt",header = FALSE, stringsAsFactors = FALSE)
 todo<- matrix(NA,nrow=nrow(archivos), ncol= 8)
 
-#cálculo de todo 
+#cÃ¡lculo de todo 
 ## ciclo for para los archivos
 for(k in 1:nrow(archivos)){
   # este archivo tiene un formato diferente
   if(k==1){
-    ## ciclo for para cada pestaña (categoría alimentaria) dentro del archivo problema 
+    ## ciclo for para cada pestaÃ±a (categorÃ­a alimentaria) dentro del archivo problema 
     for(j in 1:length(nombres)){
       base<- read_excel(archivos[k,], sheet = nombres[j])
       facs<-levels(as.factor(base$Producto))
@@ -107,7 +104,7 @@ for(k in 1:nrow(archivos)){
         medias[l]<- median(data.matrix(base[which(base[,1]==facs2[l]),5]))
       }## ciclo medio de cada tipo de producto. 
       todo[k,h]<- mean(medias)
-    }## fin del tipo de archivos que no están mal 
+    }## fin del tipo de archivos que no estÃ¡n mal 
     cat(t(round(medianas_semana,3)),file="medianas_semana.txt",append=TRUE,fill=T,sep="\t")
     # cat(t(round(todo,3)),file="medianas_semana2formato.txt",append=TRUE,fill=T,sep="\t")
   } #for de archivos
@@ -115,8 +112,7 @@ for(k in 1:nrow(archivos)){
 
 
 
-setwd("C:/Users/Seb/Google Drive/U libertadores/2018.1/Especialización/Trabajo de grado/Archivos finales")
-setwd("G:/Mi unidad/U libertadores/2018.1/Especialización/Trabajo de grado/Archivos finales")
+#######################################################
 
 sipsaxreg<-read.table("sipsaxreg.txt")
 sipsaxreg2<-read.table("sipsaxreg2.txt")
@@ -138,9 +134,9 @@ postscript("ambas.eps",width = 7, height = 5)
 plot.zoo(cbind(zoo(inf), zoo(sipsa)),#,zoo(sipsa_media)), 
          plot.type = "single", 
          col = c("red", "blue","green"),ylim=c(-4,6), 
-         main="Contraste entre índices \n SIPSA e Inflación de alimentos",
-         xlab="Año",ylab="Variación")
-legend("topleft", inset=0.05, legend=c("IPC alimentos", "Índice SIPSA"),#,"SIPSA medias"),
+         main="Contraste entre Ã­ndices \n SIPSA e InflaciÃ³n de alimentos",
+         xlab="AÃ±o",ylab="VariaciÃ³n")
+legend("topleft", inset=0.05, legend=c("IPC alimentos", "Ãndice SIPSA"),#,"SIPSA medias"),
        col=c("red", "blue","green"), lty=1:3, cex=0.8)
 dev.off()
 cor(inf,sipsa)
@@ -179,7 +175,7 @@ ajuste<-Arima(inf1,order=c(10,1,1),
               xreg=sipsaxreg[,c(1,2)])
 
 
-####Validación del modelo basado en SIPSA calculado con medianas
+####ValidaciÃ³n del modelo basado en SIPSA calculado con medianas
 BIC(ajuste)
 summary(ajuste)
 ajuste$coef[ajuste$coef !=0]/sqrt(diag(ajuste$var.coef))
@@ -197,16 +193,16 @@ pacf(res,main="PACF de residuos",xlab="Rezago", ylab="ACF Parcial")
 qqPlot(res,main="Qqplot de residuos",xlab="Cuantiles de la Dist. Normal")
 dev.off()
 
-#Autocorrelación serial
+#AutocorrelaciÃ³n serial
 Box.test(res,type = "Box-Pierce")
 #Normalidad en los residuos 
 jarque.bera.test(res)
-####Evaluación de pronóstico dentro de la muestra
+####EvaluaciÃ³n de pronÃ³stico dentro de la muestra
 sipsa2_1rezago<- ts(c(0,sipsa2[-length(sipsa2)]),start=c(9,2017),freq=12)
 predt<-forecast(ajuste,xreg=sipsaxreg2[,c(1,2)])
 inf2prono<-predt$mean
 par(mfrow=c(1,1))
-plot(predt,main="Pronóstico Fuera de la muestra",xlab="Periodo",ylab="IPC alimentos")
+plot(predt,main="PronÃ³stico Fuera de la muestra",xlab="Periodo",ylab="IPC alimentos")
 accuracy(inf2prono,inf2)
 inf2prono.li <- predt$lower[,2]
 inf2prono.ls <- predt$upper[,2]
@@ -216,9 +212,9 @@ inf2prono.ls <- predt$upper[,2]
 #lines(inf2prono.ls, type="l",col="red", lty=2)
 postscript("pronoin.eps",width = 7, height = 5)
 plot(inf2prono, type="l", col="blue", lwd=2, 
-     main="Pronóstico Fuera de la Muestra",
+     main="PronÃ³stico Fuera de la Muestra",
      xlab="",
-     ylab="Variación IPC alimentos", 
+     ylab="VariaciÃ³n IPC alimentos", 
      xaxt="n",
      ylim=c(min(inf2prono.li,inf2prono.ls),max(inf2prono.li,inf2prono.ls)))
 polygon(c(time(inf2prono.li),rev(time(inf2prono.ls))),
@@ -228,7 +224,7 @@ lines(inf2prono, type="b", col="blue", lwd=2)
 lines(inf2, type="b", col="red", lty=2) 
 meses<-c("Abr/18","Mar/18","Feb/18","Ene/18","Dec/17","Nov/17","Oct/17","Sept/17")
 axis(1, at=rev(time(inf2prono.ls)),labels=meses, las=2)
-legend("topleft", inset=0.03, legend=c("Inflación", "Pronóstico \n (SIPSA)"),
+legend("topleft", inset=0.03, legend=c("InflaciÃ³n", "PronÃ³stico \n (SIPSA)"),
        col=c("red", "blue"), lty=1:2, cex=0.8)
 dev.off()
 
@@ -252,25 +248,25 @@ lines(yfit,col="blue",lwd=2)
 acf(res)
 pacf(res)
 qqPlot(res)
-#Autocorrelación serial
+#AutocorrelaciÃ³n serial
 Box.test(res,type = "Box-Pierce")
 #Normalidad en los residuos 
 jarque.bera.test(res)
 
 forecast(ajuste_final, xreg=sipsaxregtodo[nrow(sipsaxregtodo),c(1,2)], h=1)
-(145.64*(-0.2725109)/100)+145.64 #pronóstico
+(145.64*(-0.2725109)/100)+145.64 #pronÃ³stico
 (145.64*(-1.120084)/100)+145.64 #inferior 80
 (145.64*(0.5750621)/100)+145.64 #superior 80
 (145.64*(-1.568762)/100)+145.64 #inferior 95
 (145.64*(1.02374)/100)+145.64 #superio 95
-Pronóstico 145.2431
+PronÃ³stico 145.2431
 IC 95% (143.3553;147.131)
 IC 80% (144.0087;146.4775)
 ##################### Series de tiempo multivariadas ##############
 
 par(mfrow=c(1,1))
 postscript("acfcruzado.eps",width = 7, height = 5)
-ccf(sipsa,inf,type="correlation", main="Correlación cruzada entre variación en los \n precios de alimentos y el índice SIPSA")
+ccf(sipsa,inf,type="correlation", main="CorrelaciÃ³n cruzada entre variaciÃ³n en los \n precios de alimentos y el Ã­ndice SIPSA")
 dev.off()
 
 
@@ -285,7 +281,7 @@ plot(adf1)
 plot(diff(inf), nc = 2, xlab = "")
 
 #######################################
-##### PARTE 1. Especificación del 
+##### PARTE 1. EspecificaciÃ³n del 
 ##### orden VAR. Incorporamos las
 ##### variables en niveles para poder
 ##### recoger la estructura de los
@@ -306,29 +302,29 @@ summary(modelo)
 #######################################
 ##### PARTE 2. Evaluando relaciones de
 ##### Causalidad entre las variables 
-##### de interés
+##### de interÃ©s
 
 causality(modelo, cause="sipsa")
 causality(modelo, cause="inf")
 
 #######################################
-##### PARTE 3. Diagnóstico
+##### PARTE 3. DiagnÃ³stico
 ##### del modelo
 
 est <- residuals(modelo)
 postscript("Varvalida.eps",width = 7, height = 7)
 par(mfrow=c(2,2))
-acf(est[,1],main="Residuales para la varición \n en precios de alimentos")
-acf(est[,1]^2,main="Residuos al cuadrado para \n variación en precios de alimentos")
-acf(est[,2],main="Residuos para variación \n en índice SIPSA")
-acf(est[,2]^2,main="Residuos al cuadrado para \n índice SIPSA")
+acf(est[,1],main="Residuales para la variciÃ³n \n en precios de alimentos")
+acf(est[,1]^2,main="Residuos al cuadrado para \n variaciÃ³n en precios de alimentos")
+acf(est[,2],main="Residuos para variaciÃ³n \n en Ã­ndice SIPSA")
+acf(est[,2]^2,main="Residuos al cuadrado para \n Ã­ndice SIPSA")
 dev.off()
 postscript("Varvalida.eps",width = 7, height = 4)
 par(mfrow=c(1,2))
-acf(est[,1],main="Residuales para la varición \n en precios de alimentos")
-acf(est[,1]^2,main="Residuos al cuadrado para \n variación en precios de alimentos")
-acf(est[,2],main="Residuos para variación \n en índice SIPSA")
-acf(est[,2]^2,main="Residuos al cuadrado para \n índice SIPSA")
+acf(est[,1],main="Residuales para la variciÃ³n \n en precios de alimentos")
+acf(est[,1]^2,main="Residuos al cuadrado para \n variaciÃ³n en precios de alimentos")
+acf(est[,2],main="Residuos para variaciÃ³n \n en Ã­ndice SIPSA")
+acf(est[,2]^2,main="Residuos al cuadrado para \n Ã­ndice SIPSA")
 dev.off()
 par(mfrow=c(1,1))
 postscript("Varvalida2.eps",width = 7, height = 7)
@@ -349,14 +345,14 @@ postscript("fittedvar.eps",width = 8, height = 5)
 par(mfrow=c(1,2))
 plot(ts(modelo$varresult$inf$fitted.values,start=c(2013,2),frequency=12),ylim=c(-1.5,max(inf))
      ,main="Ajustados vs Observados \n modelo VAR. precios de alimentos",
-     xlab="Periodo",ylab="Variación",col=2,lty=2)
+     xlab="Periodo",ylab="VariaciÃ³n",col=2,lty=2)
 lines(window(inf,start=c(2013,3),end=c(2017,8)))
 legend("topleft", inset=0.01, legend=c("Observados", "Ajustados"),
        col=c("black", "red"), lty=1:2, cex=0.7)
 
 plot(ts(modelo$varresult$sipsa$fitted.values,start=c(2013,2),frequency=12),ylim=c(-1.5,max(sipsa))
      ,main="Ajustados vs Observados \n modelo VAR. SIPSA",
-     xlab="Periodo",ylab="Variación",col=2,lty=2)
+     xlab="Periodo",ylab="VariaciÃ³n",col=2,lty=2)
 lines(window(sipsa,start=c(2013,3),end=c(2017,8)))
 legend("topleft", inset=0.01, legend=c("Observados", "Ajustados"),
        col=c("black", "red"), lty=1:2, cex=0.7)
@@ -391,15 +387,15 @@ plot(arch1, names = "inf")
 postscript("fluctuacion.eps",width = 7, height = 5)
 
 plot(stability(modelo), nc = 2,main="Estabilidad estructural \n del modelo propuesto"
-     , ylab="Fluctuación",xlab="Tiempo")
+     , ylab="FluctuaciÃ³n",xlab="Tiempo")
 dev.off()
 
 
 
 #######################################
-##### PARTE 3. Análisis de 
-##### de Cointegración
-##### Para tres o más variables. 
+##### PARTE 3. AnÃ¡lisis de 
+##### de CointegraciÃ³n
+##### Para tres o mÃ¡s variables. 
 vecm <- ca.jo(ytinsample, type = "eigen", ecdet = "none", 
               K =2, spec = "transitory")
 summary(vecm)
@@ -422,16 +418,16 @@ plot(fevd, plot.type="single", col=c("gray","green","red","blue"))
 #######################################   
 #### Modelo SVECM.
 #### Es posible encontrar una 
-#### representación estructural para
+#### representaciÃ³n estructural para
 #### el conjunto de variables bajo
-#### análisis.
-#### Para la definciión del SVECM
-#### se requiere la definición de la
+#### anÃ¡lisis.
+#### Para la definciiÃ³n del SVECM
+#### se requiere la definiciÃ³n de la
 #### matriz B. 
 #### Los autores establecen que
 #### existe retornos constantes a 
-#### escala, así que la
-#### productividad es únicamente
+#### escala, asÃ­ que la
+#### productividad es Ãºnicamente
 #### determinada por los choques
 #### del producto. 
 #### LP.B1,j = 0 j=2,3,4
@@ -560,11 +556,11 @@ svec.irf <- irf(salida, response = "inf", n.ahead = 12, boot = TRUE)
 
 
 plot(svec.irf)
-#,main="Impulso de respuesta de la variación\n en los precios de los alimentos (SIPSA)"
-#     , xlab="",ylab="Variación")
+#,main="Impulso de respuesta de la variaciÃ³n\n en los precios de los alimentos (SIPSA)"
+#     , xlab="",ylab="VariaciÃ³n")
 #######################################
-##### PARTE 6. Descomposición de la
-##### Varianza de Pronóstico
+##### PARTE 6. DescomposiciÃ³n de la
+##### Varianza de PronÃ³stico
 
 par(mfrow=c(1,1))
 fevd <- fevd(salida, n.ahead = 15)
@@ -576,7 +572,7 @@ plot(fevd, plot.type="single", col=c("gray","green","red","blue"))
 
 
 #######################################
-##### PARTE 7. Pronóstico
+##### PARTE 7. PronÃ³stico
 ##### el modelo de referencia es el 
 ##### VECM con r=1
 
@@ -590,8 +586,8 @@ plot(svec.irf)
 fevd <- fevd(var_vecm, n.ahead = 15)
 plot(fevd, plot.type="single", col=c("gray","green","red","blue"))
 predict(salida)
-frc <- predict(modelo,n.ahead=8,ci=0.95) #Pronóstico con VAR  
-frc <- predict(var_vecm,n.ahead=8,ci=0.95) #Pronóstico con VECM
+frc <- predict(modelo,n.ahead=8,ci=0.95) #PronÃ³stico con VAR  
+frc <- predict(var_vecm,n.ahead=8,ci=0.95) #PronÃ³stico con VECM
 plot(frc)
 fanchart(frc)
 par(mfrow=c(1,1))
@@ -601,16 +597,16 @@ accuracy(frc$fcst$inf[,1],ytoutsample[,1])
 accuracy(frc$fcst$sipsa[,1],ytoutsample[,2])
 
 
-####Pronósticos VAR#####
-frc <- predict(modelo,n.ahead=8,ci=0.95) #Pronóstico con VAR  
+####PronÃ³sticos VAR#####
+frc <- predict(modelo,n.ahead=8,ci=0.95) #PronÃ³stico con VAR  
 inf2pronomedias.li<-ts(frc$fcst$inf[,2],start=c(2017,9),frequency = 12)
 inf2pronomedias.ls<-ts(frc$fcst$inf[,3],start=c(2017,9),frequency = 12)
 prono_infl_ts<-ts(frc$fcst$inf[,1],start=c(2017,9),frequency = 12)
 postscript("pronoinvarinf.eps",width = 7, height = 5)
 plot(prono_infl_ts, type="l", col="blue", lwd=2, 
-     main="Pronóstico de la inflación dentro de la Muestra \n Modelo VAR",
+     main="PronÃ³stico de la inflaciÃ³n dentro de la Muestra \n Modelo VAR",
      xlab="",
-     ylab="Inflación de alimentos",
+     ylab="InflaciÃ³n de alimentos",
      xaxt="n",
      ylim=c(min(inf2pronomedias.li,inf2pronomedias.ls),max(inf2pronomedias.li,inf2pronomedias.ls)))
 meses<-c("Sept/17","Oct/17","Nov/17","Dec/17","Ene/18","Feb/18","Mar/18","Abr/18")
@@ -622,7 +618,7 @@ polygon(c(time(inf2pronomedias.li),rev(time(inf2pronomedias.ls))),
 lines(prono_infl_ts, type="b", col="blue", lwd=2) 
 lines(ytoutsample[,1], type="b", col="red", lty=2) 
 
-legend("topleft", inset=0.03, legend=c("Inflación", "Pronóstico"),
+legend("topleft", inset=0.03, legend=c("InflaciÃ³n", "PronÃ³stico"),
        col=c("red", "blue"), lty=1:2, cex=0.8)
 dev.off()
 
@@ -634,10 +630,10 @@ inf2pronomedias.ls<-ts(frc$fcst$sipsa[,3],start=c(2017,9),frequency = 12)
 prono_infl_ts<-ts(frc$fcst$sipsa[,1],start=c(2017,9),frequency = 12)
 postscript("pronoinvarsipsa.eps",width = 7, height = 5)
 plot(prono_infl_ts, type="l", col="blue", lwd=2, 
-     main="Pronóstico de SIPSA Dentro de la Muestra \n Modelo VAR",
+     main="PronÃ³stico de SIPSA Dentro de la Muestra \n Modelo VAR",
      xlab="",
      xaxt="n",
-     ylab="Inflación de alimentos", 
+     ylab="InflaciÃ³n de alimentos", 
      ylim=c(min(inf2pronomedias.li,inf2pronomedias.ls),max(inf2pronomedias.li,inf2pronomedias.ls)))
 meses<-c("Sept/17","Oct/17","Nov/17","Dec/17","Ene/18","Feb/18","Mar/18","Abr/18")
 axis(1, at=rev(time(inf2pronomedias.ls)),labels=meses, las=2)
@@ -648,22 +644,22 @@ polygon(c(time(inf2pronomedias.li),rev(time(inf2pronomedias.ls))),
 lines(prono_infl_ts, type="b", col="blue", lwd=2) 
 lines(ytoutsample[,2], type="b", col="red", lty=2) 
 
-legend("topleft", inset=0.03, legend=c("SIPSA", "Pronóstico"),
+legend("topleft", inset=0.03, legend=c("SIPSA", "PronÃ³stico"),
        col=c("red", "blue"), lty=1:2, cex=0.8)
 dev.off()
 
 
-####Pronóstico VECM### 
+####PronÃ³stico VECM### 
 
-frc <- predict(var_vecm,n.ahead=8,ci=0.95) #Pronóstico con VAR  
+frc <- predict(var_vecm,n.ahead=8,ci=0.95) #PronÃ³stico con VAR  
 inf2pronomedias.li<-ts(frc$fcst$inf[,2],start=c(2017,9),frequency = 12)
 inf2pronomedias.ls<-ts(frc$fcst$inf[,3],start=c(2017,9),frequency = 12)
 prono_infl_ts<-ts(frc$fcst$inf[,1],start=c(2017,9),frequency = 12)
 postscript("pronoinvarinfvec.eps",width = 7, height = 5)
 plot(prono_infl_ts, type="l", col="blue", lwd=2, 
-     main="Pronóstico de la inflación dentro de la Muestra \n Modelo VEC",
+     main="PronÃ³stico de la inflaciÃ³n dentro de la Muestra \n Modelo VEC",
      xlab="",
-     ylab="Inflación de alimentos",
+     ylab="InflaciÃ³n de alimentos",
      xaxt="n",
      ylim=c(min(inf2pronomedias.li,inf2pronomedias.ls),max(inf2pronomedias.li,inf2pronomedias.ls)))
 meses<-c("Sept/17","Oct/17","Nov/17","Dec/17","Ene/18","Feb/18","Mar/18","Abr/18")
@@ -675,7 +671,7 @@ polygon(c(time(inf2pronomedias.li),rev(time(inf2pronomedias.ls))),
 lines(prono_infl_ts, type="b", col="blue", lwd=2) 
 lines(ytoutsample[,1], type="b", col="red", lty=2) 
 
-legend("topleft", inset=0.03, legend=c("Inflación", "Pronóstico"),
+legend("topleft", inset=0.03, legend=c("InflaciÃ³n", "PronÃ³stico"),
        col=c("red", "blue"), lty=1:2, cex=0.8)
 dev.off()
 
@@ -687,10 +683,10 @@ inf2pronomedias.ls<-ts(frc$fcst$sipsa[,3],start=c(2017,9),frequency = 12)
 prono_infl_ts<-ts(frc$fcst$sipsa[,1],start=c(2017,9),frequency = 12)
 postscript("pronoinvarsipsavec.eps",width = 7, height = 5)
 plot(prono_infl_ts, type="l", col="blue", lwd=2, 
-     main="Pronóstico de SIPSA Dentro de la Muestra \n Modelo VEC",
+     main="PronÃ³stico de SIPSA Dentro de la Muestra \n Modelo VEC",
      xlab="",
      xaxt="n",
-     ylab="Inflación de alimentos", 
+     ylab="InflaciÃ³n de alimentos", 
      ylim=c(min(inf2pronomedias.li,inf2pronomedias.ls),max(inf2pronomedias.li,inf2pronomedias.ls)))
 meses<-c("Sept/17","Oct/17","Nov/17","Dec/17","Ene/18","Feb/18","Mar/18","Abr/18")
 axis(1, at=rev(time(inf2pronomedias.ls)),labels=meses, las=2)
@@ -701,32 +697,6 @@ polygon(c(time(inf2pronomedias.li),rev(time(inf2pronomedias.ls))),
 lines(prono_infl_ts, type="b", col="blue", lwd=2) 
 lines(ytoutsample[,2], type="b", col="red", lty=2) 
 
-legend("topleft", inset=0.03, legend=c("SIPSA", "Pronóstico"),
+legend("topleft", inset=0.03, legend=c("SIPSA", "PronÃ³stico"),
        col=c("red", "blue"), lty=1:2, cex=0.8)
 dev.off()
-
-
-
-A1<-matrix(c(0.453,0.150,0.199,0.188),2,2,byrow=T)
-A2<-matrix(c(0.0224,-0.0803,0.3812,-0.2310),2,2,byrow=T)
-A<-matrix(c(1,-0.2598,0,1),2,2,byrow=T)
-
-A%*%A1
-A%*%A2
-
-errores<-matrix(c(27.25,27.38,27.38,105.39),2,2,byrow=T)
-errores/100
-
-
-gg<-c(1.89,1,0.83,3.75,4.31,4.78,0.6,2.99)
-sum(round(gg/sum(gg),3))
-
-library(astsa)
-xt <- arima.sim(n=200, order=c(1,0,1), ar = 0.6, ma = -0.1,
-                  seasonal=list(order=c(1,1,0),sar=0.3),period=4)
-xt<-arima.sim(n = 200, list(ar = 0.8897, ma =-0.2279,sar=0.12),freq=4)
-arima
-plot(xt)
-aju<-astsa::sarima(xt,p=1,d=0,q=1,P=1,D=1,Q=0,S=4)
-dif<-diff(aju)
-
