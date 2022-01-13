@@ -3,12 +3,12 @@
 This repository contains code for the paper 
 > [**Proposal for a SIPSA index and its relation to food inflation for the Colombian case: empirical evidence**](https://revistas.usantotomas.edu.co/index.php/estadistica/article/view/5635/5549).
 
-Food inflation is often considered as an important topic as it impacts greatly every single person in a society. Thus, being able to forecast it, up to certain degree of precision, is of interest of related individuals, public and private entities involved in food supply chains. In this work, we aimed to contribute to this problem, for the colombian scenario, proposing an index (SIPSA index) and assessing its relevance when it comes to forecast food inflation. Three models were used: 
-1. Seasonal Autoregressive Integrated Moving Average with exogenous regressors (SARIMAX) model, which provides a way to forecast food inflation using the proposed SIPSA index as an exogenous variable. 
-2. Structural Vectorial Autoregressive (SVAR) model, which provides a glimpse on the dynamics on the short-term relation between variables and the variance descomposition for the forecast of food inflation. We estimate that 40% of food inflation can be explained with the proposed index. 
-3. Structural Vector Error Correction (SVEC) model, which provides a glimpse on the dynamics on the long-term relation between variables and the equilibrium equation stablishing the linear combination of variables being I(0). This is, the proposed index succeed to capture the dynamics of the food inflation in the long-run. 
-
-}
+#### Summary
+> Food inflation is often considered as an important topic as it impacts greatly every single person in a society. Thus, being able to forecast it, up to certain degree of precision, is of interest of related individuals, public and private entities involved in food supply chains. In this work, we aimed to contribute to this problem, for the colombian scenario, proposing an index (SIPSA index) and assessing its relevance when it comes to forecast food inflation. Three models were used: 
+> 1. Seasonal Autoregressive Integrated Moving Average with exogenous regressors (SARIMAX) model, which provides a way to forecast food inflation using the proposed SIPSA index as an exogenous variable. 
+> 2. Structural Vectorial Autoregressive (SVAR) model, which provides a glimpse on the dynamics on the short-term relation between variables and the variance descomposition for the forecast of food inflation. We estimate that 40% of food inflation can be explained with the proposed index. 
+> 3. Structural Vector Error Correction (SVEC) model, which provides a glimpse on the dynamics on the long-term relation between variables and the equilibrium equation stablishing the linear combination of variables being I(0). This is, the proposed index succeed to capture the dynamics of the food inflation in the long-run. 
+> Proposed SIPSA index is merely based on how much does food items cost in various market places across regions. So, if data is available, similar approaches could be used in order to determine suitable forecasting for food inflation. 
 
 SIPSA is actually a branch of DANE (Departamento Administrativo Nacional de Estadística - National Administrative Department of Statistics, public agency in Colombia dealing with national statistics) in charge of collecting food prices for every product sold in marketplaces located in every city ranging from medium to big sized, across the country. The main aim was to utilize such information as a proxy for understanding and thus, predicting, food inflation (wich, for colombian market, represents ~25% of overall inflation). Several conclusions: 
 
@@ -40,10 +40,6 @@ After an exhaustive search process, a <img src="https://render.githubusercontent
 | Standard error | 0\.1147         | 0\.1115          | 0\.1357         | 0\.1246            | 0\.1130       | 0\.0425               | 0\.0434                  |
 | t-value        | -4\.06          | -2\.34           | -3\.62          | 2\.60              | -4\.04        | 7\.06                 | 3\.63                    |
 
-This model displays no evidencie of autocorrelation (p-value for Ljung-Box test of 0.1686 was obtained) as well of no normality on its residuals (p-value for Jarque-Bera test <0.01 was found). Additionaly, visual inspection of residuals shows good adequacy. BIC was used as general goodness of fit measure, for this model, we report a BIC of -120. 
-
-![Tux, the Linux mascot](/Images/valarimax.png)
-
 
 ## VAR model 
 
@@ -58,20 +54,16 @@ Where
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDinf}_i">   | -1\.1881 | -1\.055 | -0\.941 | -1\.384 | -1\.417 | -0\.991 | -1\.567 | -1\.131 | -1\.428 | -1\.147 | -0\.877 |
 |<img src="https://render.githubusercontent.com/render/math?math=\text{SDSIPSA}_i">  | -0\.930  | -0\.293 | -0\.590 | -1\.755 | -1\.210 | -0\.060 | -1\.597 | -0\.895 | -0\.655 | -0\.535 | -0\.200 |
 
-Once the model was obtained, stability was verified by means of the impulse-response approach and residuals were checked by means of Portmanteau, Arch and Mutivariate normality test at usual 5% of significance.
-
-![Tux, the Linux mascot](/Images/fluctuacion.png)
-
- At the end, the proposed model aims to provide a reasonable pattern understanding in the short run relation between the proposed SIPSA index and food inflation. This is clearly determined by the variance descomposition. SIPSA proposed index explains ~40% of the variance in the forecast of food inflation. 
- 
- ![Tux, the Linux mascot](/Images/fevdipc.png)
+At the end, the proposed model aims to provide a reasonable pattern understanding in the short run relation between the proposed SIPSA index and food inflation. This is clearly determined by the variance descomposition. SIPSA proposed index explains ~40% of the variance in the forecast of food inflation. 
  
  ## VEC model
  After an exhaustive search process, a SVAR was established as the best model to determine the relation between variables in the long run. Such model implies the following equilibrium equation.
  
  <img src="https://render.githubusercontent.com/render/math?math=y_t=\text{Food inflation}_t-1.2218\text{SIPSA}_t-0.0007t \sim I(0)  ">
  
- Once agains stability was verified by means of the impulse-response approach and residuals were checked by means of Portmanteau, Arch and Mutivariate normality test at usual 5% of significance. Following the equilibrium equation, the Ortogonal impulse response
+This stablishes that the proposed index captures the dynamics of food inflation in the long run. 
+
+
  
  
 
