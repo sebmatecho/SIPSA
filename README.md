@@ -65,11 +65,9 @@ This stablishes that the proposed index captures the dynamics of food inflation 
 # Future work 
 
 1. To propose a SIPSA index based on another methodology (different from the calculation of medians) to obtain a more robust index that helps to better capture the information present in the reports given by SIPSA.
-2. To understand how the SIPSA index may be leveraged if other variables could be included, such as: fuel prices, weather, some infrastructure index, etc.
-3. To formulate other indices, not necessarily based on SIPSA, to see their relationship over time with the variation and with the index proposed here.
-4. Based on the SIPSA index presented, investigate a complementary methodology that incorporates the dynamics of food consumption out of home (which is 30% of food inflation in Colombia).
-5. To assess the sole impact of the Covid-19 pandemics on food inflation. 
-
- 
+2. Based on the SIPSA index presented, investigate a complementary methodology that incorporates the dynamics of food consumption out of home (which is 30% of food inflation in Colombia).
+3. To understand how the SIPSA index may be leveraged if other variables could be included, such as: fuel prices, weather, some infrastructure index, etc.
+4. To formulate other indices, not necessarily based on SIPSA, to see their relationship over time with the variation and with the index proposed here.
+5. To assess the impact of the Covid-19 pandemics on food inflation despite the fact that various countries implemented regulation on food and good prices at the beggining of the pandemics. So, what can we learn about the relation of the pandemic with food pricing? 
  
 
