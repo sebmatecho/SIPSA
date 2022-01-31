@@ -5,7 +5,7 @@ This repository contains code for the paper
 
 #### Summary
 > Food inflation is often considered as an important topic as it impacts greatly every single person in a society. Thus, being able to forecast it, up to certain degree of precision, is of interest of related individuals, public and private entities involved in food supply chains. In this work, we aimed to contribute to this problem, for the colombian scenario, proposing an index (SIPSA index) and assessing its relevance when it comes to forecast food inflation. Three models were used: 
-> 1. Seasonal Autoregressive Integrated Moving Average with exogenous regressors (SARIMAX) model, which provides a way to forecast food inflation using the proposed SIPSA index as an exogenous variable. 
+> 1. Seasonal Autoregressive Integrated Moving Average with exogenous regressors (SARIMAX) model, which provides a manner to forecast food inflation using the proposed SIPSA index as an exogenous variable
 > 2. Structural Vectorial Autoregressive (SVAR) model, which provides a glimpse on the dynamics on the short-term relation between variables and the variance descomposition for the forecast of food inflation. We estimate that 40% of food inflation can be explained with the proposed index. 
 > 3. Structural Vector Error Correction (SVEC) model, which provides a glimpse on the dynamics on the long-term relation between variables and the equilibrium equation stablishing the linear combination of variables being I(0). This is, the proposed index succeed to capture the dynamics of the food inflation in the long-run. 
 > 
